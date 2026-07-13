@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antoine David | Signup Churn™ → MRR</title>
+  <meta name="description" content="Je chiffre le MRR que ton funnel d'inscription laisse partir — en €, annualisé, défendable devant ton board. Puis je le récupère.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #0B0908; overflow-x: hidden; }
+    body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #E8A04C; text-decoration: none; }
+    a:hover { color: #F2C078; }
+    ::selection { background: rgba(232,160,76,.35); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 70px rgba(224,110,25,.4); } 50% { box-shadow: 0 0 120px rgba(232,130,35,.65); } }
+
+    .hv-wa:hover { background: #3BE07A !important; transform: translateY(-1px); }
+    .hv-cream-sm:hover { background: #FFF6E4 !important; transform: translateY(-1px); }
+    .hv-cream-lg:hover { background: #FFF6E4 !important; transform: translateY(-2px); }
+    .hv-card-light:hover { transform: translateY(-5px); box-shadow: 0 16px 34px rgba(26,19,12,.12); }
+    .hv-price-light:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(224,120,30,.22); }
+    .hv-card-dark:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,.45); border-color: rgba(242,192,120,.45) !important; }
+
+    @media (max-width: 640px) {
+      .hero-photo { width: 100% !important; height: auto !important; }
+      .hero-photo-wrap { margin-bottom: 0 !important; padding: 20px 0 0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div style="min-height: 100vh; background: #0B0908; color: #F7F3EC; font-family: 'Outfit', sans-serif">
+
+  <!-- ============ HEADER STICKY ============ -->
+  <header style="position: sticky; top: 0; z-index: 100; background: rgba(11,9,8,.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(242,231,211,.1)">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+      <div style="display: flex; align-items: baseline; gap: 10px">
+        <span style="font-weight: 800; font-size: 17px; letter-spacing: -0.01em; color: #F7F3EC">Antoine David</span>
+        <span style="font-size: 13px; color: #B8AFA3">Signup Churn™ → MRR</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <a href="https://wa.me/33623005270" target="_blank" rel="noopener" class="hv-wa" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #06341B; font-weight: 700; font-size: 14px; padding: 9px 18px; border-radius: 999px; transition: transform .2s ease, background .2s ease">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
+          WhatsApp
+        </a>
+        <a href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-sm" style="background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 14px; padding: 9px 20px; border-radius: 999px; transition: transform .2s ease, background .2s ease">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section style="position: relative; background: linear-gradient(180deg, rgba(10,8,7,.62) 0%, rgba(10,8,7,.28) 40%, rgba(11,9,8,.45) 82%, rgba(11,9,8,.85) 100%), url('assets/bg-hero.png') center 65% / cover no-repeat, #0B0908">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 8px 32px 0">
+
+      <div style="display: flex; align-items: center; gap: 56px; padding: 72px 0 64px; flex-wrap: wrap">
+        <div style="flex: 1 1 520px; min-width: 380px">
+          <h1 style="margin: 0; font-size: 46px; line-height: 1.16; font-weight: 700; letter-spacing: -0.015em; animation: fadeUp .8s ease .05s both">
+            Tes inscrits s'en vont?<br>
+            <span style="color: rgb(242, 192, 120);">C'est du Signup Churn<sup style="font-size: 0.42em; font-weight: 600; letter-spacing: 0px;">™</sup>.<br>Je le transforme en MRR.</span>
+          </h1>
+          <p style="margin: 22px 0 0; font-size: 19px; line-height: 1.55; color: #CFC5B6; max-width: 560px; text-wrap: pretty; animation: fadeUp .8s ease .18s both">
+            Je chiffre le MRR que ton funnel d'inscription laisse partir : <br>en €, annualisé, défendable devant ton board. Puis je le récupère.
+          </p>
+
+          <div style="display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; animation: fadeUp .8s ease .3s both">
+            <a href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-lg" style="display: inline-flex; align-items: center; gap: 10px; background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 17px; padding: 15px 30px; border-radius: 999px; box-shadow: 0 8px 30px rgba(224,120,30,.25); transition: transform .2s ease, background .2s ease">
+              <span style="font-size: 15px">↙</span> Réserver un call de 30 min
+            </a>
+            <span style="font-size: 14px; color: #B8AFA3">Gratuit. Tu repars avec une première estimation de ton Signup Churn.</span>
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; animation: fadeUp .8s ease .42s both">
+            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">Première estimation en 48h</span>
+            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">+43% d'activation</span>
+            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">+20M€ récupérés</span>
+          </div>
+        </div><div class="hero-photo-wrap" style="flex: 0 0 auto; margin: 0 auto -64px; align-self: flex-end; background: radial-gradient(closest-side, rgba(224,110,25,.32) 0%, rgba(224,110,25,0) 72%); padding: 28px 28px 0; padding-right: 0px">
+          <img src="photosite-mrj3ymaw.png" alt="Antoine David" class="hero-photo" style="width: 441px; height: 411px; display: block; filter: drop-shadow(0 14px 44px rgba(224,110,25,.45)); animation: fadeUp .9s ease .2s both">
+        </div>
+
+      </div><div data-reveal="0" style="border-top: 1px solid rgba(242,231,211,.12); padding: 26px 0 30px; display: flex; align-items: center; gap: 12px 36px; flex-wrap: wrap">
+          <span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C8377; font-weight: 600">Ils m'ont fait confiance</span>
+          <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap; font-weight: 700; font-size: 17px; color: #9A9186">
+            <span>TheFork</span><span>Tiime</span><span>Luni</span><span>kolsquare</span><span>Scenario</span><span>finfrog</span><span>Wemind</span><span style="font-style: italic">Flink'</span>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEME ============ -->
+  <section style="background: #F2E7D3; color: #1A130C">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
+      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">Le problème</p>
+      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 720px; text-wrap: pretty">Le funnel le plus cher de ta boîte est celui que personne ne regarde.</h2>
+      <p data-reveal="140" style="margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: #5C5142; max-width: 680px; text-wrap: pretty">
+        Entre l'inscription et le premier paiement, ton produit perd des clients qui avaient déjà dit oui. Pose la question autour de toi&nbsp;: <em style="color: #B4651D; font-style: normal; font-weight: 600">«&nbsp;Qui chez nous possède la conversion entre l'inscription et le premier paiement&nbsp;?&nbsp;»</em> Le blanc qui suit, c'est le prix que tu paies chaque mois.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 44px">
+        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">30–50%</div>
+          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">des visiteurs abandonnent au signup avant même de créer leur compte.</p>
+        </div>
+        <div data-reveal="130" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">70%</div>
+          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">du churn se joue dans les 90 premiers jours, avant que le revenu n'existe.</p>
+        </div>
+        <div data-reveal="260" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">66%</div>
+          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">des SaaS PLG ne mesurent même pas leur activation.</p>
+        </div>
+      </div><p data-reveal="0" style="margin: 36px 0 0; font-size: 20px; line-height: 1.5; color: #1A130C; font-weight: 600; max-width: 640px; text-wrap: pretty">
+        Mon travail&nbsp;: convertir chaque drop-off en MRR évaporé annualisé.<br>Un chiffre en euros, défendable, que tu peux poser devant ton board.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ============ OFFRE ============ -->
+  <section style="background: #F2E7D3; color: #1A130C">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 96px">
+      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">La méthode</p>
+      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2">
+        Diagnostic → Fix → Preuve.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px">
+        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="display: flex; align-items: center; justify-content: space-between">
+            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">01 · Diagnostic</span>
+            <span style="font-size: 13px; color: #9A8E7D">5 jours ouvrés</span>
+          </div>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le chiffrage du Signup Churn</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
+            Ton funnel inscription → premier paiement, cartographié. <br>Chaque drop-off chiffré, chaque perte convertie en ARR. <br>Verdict inclus&nbsp;: conversion sous-performante ou funnel cassé.
+          </p>
+        </div>
+        <div data-reveal="130" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="display: flex; align-items: center; justify-content: space-between">
+            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">02 · Sprint</span>
+            <span style="font-size: 13px; color: #9A8E7D">15 jours ouvrés</span>
+          </div>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le fix, prêt pour tes devs</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
+            Le poste n°1 de ton Signup Churn, traité en entier&nbsp;: flows, écrans, copy, états.<br><br>Prototype navigable si le funnel le justifie. <br><br>Workshop de priorisation en clôture.
+          </p>
+        </div>
+        <div data-reveal="260" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
+          <div style="display: flex; align-items: center; justify-content: space-between">
+            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">03 · Preuve</span>
+            <span style="font-size: 13px; color: #9A8E7D">Avant / après</span>
+          </div>
+          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le MRR récupéré, mesuré</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
+            Plan de mesure avant/après livré avec le sprint. <br><br>Le MRR récupéré devient un chiffre une preuve.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIX ============ -->
+  <section style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
+    <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #C98A2B; font-weight: 700">Le prix</p>
+
+    <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 700px; text-wrap: pretty">Un livrable, un délai, un prix.</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px">
+      <div data-reveal="0" class="hv-price-light" style="background: #F2E7D3; color: #1A130C; border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A06A1E">Diagnostic Signup Churn™</span>
+        <div style="display: flex; align-items: baseline; gap: 10px">
+          <span style="font-size: 46px; font-weight: 800; letter-spacing: -0.02em">3 500€</span>
+          <span style="font-size: 15px; color: #6B5B44">HT · 5 jours ouvrés</span>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4A3D2C; text-wrap: pretty">
+          Le chiffrage complet de ton Signup Churn, le verdict, la priorisation, et une restitution de 60–90 min. <strong>Crédité à 100% si le sprint suit.</strong>
+        </p>
+      </div>
+      <div data-reveal="150" class="hv-card-dark" style="background: linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #C98A2B">Sprint</span>
+        <div style="display: flex; align-items: baseline; gap: 10px">
+          <span style="font-size: 46px; font-weight: 800; letter-spacing: -0.02em; color: #F2C078">9,5–14k€</span>
+          <span style="font-size: 15px; color: #8C8377">HT · 15 jours ouvrés</span>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
+          Prix fixé <strong style="color: #F7F3EC">après</strong> le Diagnostic, selon le MRR en jeu. 50% à la signature, 50% à la livraison. Si 240k€/an s'évaporent et que le sprint en coûte 12, la discussion prix disparaît.
+        </p>
+      </div>
+    </div>
+
+    <p data-reveal="0" style="margin: 24px 0 0; font-size: 16px; line-height: 1.55; color: #B8AFA3; max-width: 720px; text-wrap: pretty">
+      Tu préfères parier&nbsp;? Il existe une formule à fixe réduit + pourcentage du MRR récupéré mesuré sur 12 mois. Elle a trois conditions d'entrée. On les vérifie ensemble au call.
+    </p>
+  </section>
+
+  <!-- ============ POUR QUI ============ -->
+  <section style="background: #F2E7D3; color: #1A130C; margin-top: 96px">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 96px">
+      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">Pour qui</p>
+      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2">
+        Je ne travaille pas avec tout le monde.
+      </h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px">
+        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(180,101,29,.35); border-radius: 18px; padding: 32px; transition: transform .25s ease, box-shadow .25s ease">
+          <p style="margin: 0 0 18px; font-size: 17px; font-weight: 700; color: #B4651D">C'est pour toi si</p>
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5; color: #3A3125">
+            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Tu diriges le produit ou le growth d'un SaaS PLG self-serve, Series A–B.</span></div>
+            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Des milliers de signups par mois entrent dans ton funnel.</span></div>
+            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Tu sens que du revenu s'évapore entre l'inscription et le premier paiement, sans savoir combien.</span></div>
+          </div>
+        </div>
+        <div data-reveal="150" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; transition: transform .25s ease, box-shadow .25s ease">
+          <p style="margin: 0 0 18px; font-size: 17px; font-weight: 700; color: #9A8E7D">Ce n'est pas pour toi si</p>
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5; color: #5C5142">
+            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Tu cherches encore ton product-market fit.</span></div>
+            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Ta vente est 100% sales-led, ton funnel self-serve n'est pas le sujet.</span></div>
+            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Ton équipe activation est déjà structurée et outillée.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREUVE ============ -->
+  <section style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
+    <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #C98A2B; font-weight: 700">Les preuves</p>
+    <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 700px; text-wrap: pretty">Du MRR récupéré, mesuré.</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px">
+      <div data-reveal="0" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">TheFork · Checkout</span>
+        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">+30%</div>
+        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de conversion checkout</div>
+        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
+          Plus de <strong style="color: #F2C078">10M€ de commissions incrémentales</strong> au niveau de l'écosystème.
+        </p>
+      </div>
+      <div data-reveal="130" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">App de scan · 26,7M downloads</span>
+        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">−3 min</div>
+        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de time-to-value</div>
+        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
+          Parcours premier usage simplifié, paywall affiché au moment précis, sur une app à <strong style="color: #F2C078">46,4M$ de revenus</strong>.
+        </p>
+      </div>
+      <div data-reveal="260" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
+        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">App de Bible · 10M downloads</span>
+        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">+23,2%</div>
+        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de revenus en 12 mois</div>
+        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
+          <strong style="color: #F2C078">123 748€ gagnés</strong> sur l'année et budget acquisition supprimé, avec 59,5% de téléchargements en moins.
+        </p>
+      </div>
+    </div>
+
+    <p data-reveal="0" style="margin: 28px 0 0; font-size: 15px; color: #8C8377; max-width: 640px; text-wrap: pretty">
+      Ces mesures avant/après alimentent les +20M€ récupérés en cumul de carrière.
+    </p>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section style="position: relative; margin-top: 110px; background: radial-gradient(900px 500px at 50% 115%, rgba(224,102,20,.5) 0%, rgba(160,58,10,.22) 40%, rgba(11,9,8,0) 75%), #0B0908; border-top: 1px solid rgba(242,231,211,.1)">
+    <div style="max-width: 760px; margin: 0 auto; padding: 96px 32px 110px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0">
+      <div data-reveal="0" style="width: 96px; height: 96px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(242,231,211,.7); box-shadow: 0 0 40px rgba(224,110,25,.4); animation: glowPulse 5s ease-in-out 1s infinite">
+        <img src="assets/photo.png" alt="Antoine David" style="width: 100%; height: 100%; object-fit: cover; display: block">
+      </div>
+      <h2 data-reveal="100" style="margin: 28px 0 0; font-size: 38px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; text-wrap: pretty">
+        Combien ton Signup Churn te coûte, en euros&nbsp;?
+      </h2>
+      <p data-reveal="180" style="margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: #CFC5B6; max-width: 540px; text-wrap: pretty">
+        30 minutes en visio. Tu repars avec une première estimation de ton Signup Churn, même si on ne travaille jamais ensemble.
+      </p>
+      <a data-reveal="260" href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-lg" style="display: inline-flex; align-items: center; gap: 10px; background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 18px; padding: 17px 36px; border-radius: 999px; margin-top: 34px; box-shadow: 0 10px 40px rgba(224,120,30,.3); transition: transform .2s ease, background .2s ease">
+        <span style="font-size: 15px">↙</span> Réserver mon créneau
+      </a>
+      <p style="margin: 16px 0 0; font-size: 13px; color: #8C8377">Réponse sous 48h ouvrées, toujours.</p>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer style="border-top: 1px solid rgba(242,231,211,.08); padding: 28px 32px; display: flex; justify-content: center; gap: 24px; font-size: 13px; color: #6B6259">
+    <span>Antoine David · Paris, France</span>
+    <span>·</span>
+    <span>Signup Churn™ → MRR</span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  els.forEach(function (el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity .7s ease, transform .7s ease';
+    el.style.transitionDelay = (el.getAttribute('data-reveal') || '0') + 'ms';
+  });
+
+  var pending = els;
+  function onScroll() {
+    if (!pending.length) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    pending = pending.filter(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh - 40 && r.bottom > -20) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        return false;
+      }
+      return true;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  requestAnimationFrame(function () { requestAnimationFrame(onScroll); });
+  setTimeout(onScroll, 400);
+})();
+</script>
+</body>
+</html>

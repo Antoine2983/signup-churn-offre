@@ -1332,3 +1332,19 @@ a.co-chip:hover{transform:translateY(-2px)}
   background:var(--red);transition:right .3s cubic-bezier(.2,.7,.2,1);
 }
 .src:hover .src-go::after{right:0}
+
+/* ---------- Corrections v2.7 ---------- */
+
+/* Ancres : défilement fluide */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+/* CTA des moyennes du marché : reflet qui balaie, comme les autres CTA */
+.mcta{overflow:hidden}
+.mcta::after{
+  content:'';position:absolute;top:0;bottom:0;left:-70%;width:45%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-18deg);pointer-events:none;transition:left .001s;
+}
+.mmodel:hover .mcta::after{left:135%;transition:left .6s ease .2s}
+@media (prefers-reduced-motion: reduce){.mcta::after{display:none}}

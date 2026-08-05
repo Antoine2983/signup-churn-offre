@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyse · Entre tes chiffres | Signup Churn</title>
+<meta name="description" content="Entre tes 4 chiffres : le simulateur situe ton funnel face aux moyennes de 200 SaaS B2B et chiffre ton manque à gagner annuel. Gratuit, sans compte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&family=JetBrains+Mono:wght@400;500;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="sim-page">
+
+<header class="sim-header site-header--light">
+  <a class="back" href="index.html">← Retour</a>
+  <a class="logo" href="index.html">
+    <span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span>
+  </a>
+  <span style="width:64px"></span>
+</header>
+
+<!-- Funnel : Tes chiffres → Analyse → Ton rapport -->
+<nav class="wizard-steps" aria-label="Étapes">
+  <div class="wstep active" data-step="1"><span class="num">1</span><span class="lbl">Tes chiffres</span></div>
+  <span class="wstep-sep"></span>
+  <div class="wstep" data-step="2"><span class="num">2</span><span class="lbl">Analyse</span></div>
+  <span class="wstep-sep"></span>
+  <div class="wstep" data-step="3"><span class="num">3</span><span class="lbl">Ton rapport</span></div>
+</nav>
+
+<!-- ============ FORMULAIRE ============ -->
+<section class="sim-screen active" id="screen-form">
+  <div class="sim-head rv">
+    <span class="kicker">Analyse</span>
+    <h1>Entre tes chiffres</h1>
+  </div>
+
+  <form class="form-card rv" data-rv-delay="120" id="simForm" novalidate>
+    <div class="form-fields">
+      <div class="field">
+        <label for="model">Type de modèle</label>
+        <select id="model">
+          <option value="freemium" selected>Freemium</option>
+          <option value="ungated">Produit ouvert</option>
+          <option value="optin">Essai sans CB</option>
+          <option value="cb">Essai avec CB</option>
+          <option value="demo">Démo commerciale</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="visitors">Visiteurs sur ta landing / mois</label>
+          <input type="number" id="visitors" min="1" inputmode="numeric" placeholder="8700">
+        </div>
+        <div class="field">
+          <label for="signups" id="lblSignups">Inscrits / mois</label>
+          <input type="number" id="signups" min="0" inputmode="numeric" placeholder="1200">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="paid" id="lblPaid">Inscrits → payants / mois</label>
+          <input type="number" id="paid" min="0" inputmode="numeric" placeholder="30">
+        </div>
+        <div class="field">
+          <label for="arpa">Prix moyen payé par client €/mois</label>
+          <input type="number" id="arpa" min="1" inputmode="numeric" placeholder="80">
+        </div>
+      </div>
+
+      <!-- Champs optionnels : débloquent des marqueurs du rapport (mécanique Golden) -->
+      <button type="button" class="refine-toggle" id="refineToggle">
+        <span class="icon">›</span> Affiner mon rapport · <span id="refineCount">2</span> champs optionnels
+      </button>
+      <div class="refine" id="refine">
+        <p class="refine-hint">Ces chiffres débloquent des marqueurs supplémentaires dans ton rapport. Pas sous la main ? Lance quand même · on les retrouve ensemble au call.</p>
+        <div class="form-row" id="rowE2p" style="display:none">
+          <div class="field">
+            <label for="e2p">Essai → payant en fin d'essai (%)</label>
+            <input type="number" id="e2p" min="0" max="100" inputmode="numeric" placeholder="18">
+          </div>
+          <div class="field"></div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="activations">Activations à J7 / mois</label>
+            <input type="number" id="activations" min="0" inputmode="numeric" placeholder="380">
+          </div>
+          <div class="field">
+            <label for="retention">Rétention à 1 mois (%)</label>
+            <input type="number" id="retention" min="1" max="100" inputmode="numeric" placeholder="74">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="cta cta--block" type="submit" style="text-transform:uppercase;letter-spacing:.03em">Lancer l'analyse</button>
+  </form>
+
+  <div class="form-notes rv" data-rv-delay="240" style="padding-top:0;margin-top:-30px;flex-direction:column;gap:10px">
+    <div class="form-note"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Aucun compte à créer</div>
+    <div class="form-note"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Aucune donnée stockée</div>
+    <div class="form-note"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verdict dans la page suivante</div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--white">
+  <div class="section-inner">
+    <div class="faq-cols">
+      <div class="faq-head rv">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Les questions qu'on me pose</h2>
+      </div>
+      <div class="faq-list rv" data-rv-delay="120" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner sf-grid">
+    <div class="sf-brand">
+      <a class="logo" href="index.html"><span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span></a>
+      <p class="sf-tag">J'aide les SaaS B2B à transformer plus d'inscrits en clients payants. Audit chiffré en euros, sprint dans le produit, résultats mesurés.</p>
+      <a class="sf-in" href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antoine David</a>
+    </div>
+    <nav class="sf-col" aria-label="Explorer">
+      <span class="sf-h">Explorer</span>
+      <a href="analyse.html">Le simulateur</a>
+      <a href="index.html#protocole">Le protocole</a>
+      <a href="index.html#cas">Cas clients</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="etude.html">L'étude</a>
+    </nav>
+    <div class="sf-col">
+      <span class="sf-h">Contact</span>
+      <a href="https://calendly.com/signup-churn/call-15min" target="_blank" rel="noopener">Réserver un call de 15 min</a>
+      <a href="mailto:contact@antoinedavid.com">contact@antoinedavid.com</a>
+      <a href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="section-inner sf-bottom">
+    <span>© 2026 Signup Churn · Antoine David</span>
+    <span><a class="sf-study" href="etude.html">Benchmarks : ChartMogul × ProductLed × Poyar 2026 · 200 SaaS B2B self-serve</a></span>
+  </div>
+</footer>
+
+<script src="js/models.js"></script>
+<script src="js/faq.js"></script>
+<script src="js/analyse.js"></script>
+<script src="js/fx.js"></script>
+</body>
+</html>

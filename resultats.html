@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ton rapport · Ta position face au marché | Signup Churn</title>
+<meta name="description" content="Ton funnel comparé aux moyennes de 200 SaaS B2B : verdict par marqueur et manque à gagner annuel chiffré en euros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&family=JetBrains+Mono:wght@400;500;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="sim-page">
+
+<header class="sim-header site-header--light">
+  <a class="back" href="analyse.html" id="editLink">← Modifier mes chiffres</a>
+  <a class="logo" href="index.html">
+    <span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span>
+  </a>
+  <span style="width:64px"></span>
+</header>
+
+<!-- Funnel : Tes chiffres → Analyse → Ton rapport -->
+<nav class="wizard-steps" aria-label="Étapes">
+  <div class="wstep done" data-step="1"><span class="num">1</span><span class="lbl">Tes chiffres</span></div>
+  <span class="wstep-sep"></span>
+  <div class="wstep active" data-step="2" id="wstep2"><span class="num">2</span><span class="lbl">Analyse</span></div>
+  <span class="wstep-sep"></span>
+  <div class="wstep" data-step="3" id="wstep3"><span class="num">3</span><span class="lbl">Ton rapport</span></div>
+</nav>
+
+<!-- ============ OVERLAY ANALYSE (mécanique Golden) ============ -->
+<div class="analysis-overlay" id="analysisOverlay">
+  <div class="sim-head">
+    <span class="kicker">Analyse</span>
+    <h1>Analyse en cours…</h1>
+  </div>
+  <div class="analysis-card">
+    <div class="analysis-line"><span class="dot"><span>1</span><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lecture de tes chiffres</div>
+    <div class="analysis-line"><span class="dot"><span>2</span><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Comparaison aux moyennes de 200 SaaS B2B</div>
+    <div class="analysis-line"><span class="dot"><span>3</span><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Calcul des écarts par marqueur</div>
+    <div class="analysis-line"><span class="dot"><span>4</span><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 7.5 5.5 10.5 11.5 4" stroke="#018d01" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chiffrage du manque à gagner</div>
+    <p class="analysis-sub" id="analysisSub">Références : ChartMogul × ProductLed × Poyar 2026</p>
+  </div>
+</div>
+
+<!-- ============ RAPPORT ============ -->
+<main class="report-page" id="reportPage">
+
+  <div class="sim-head report-head-anim">
+    <span class="kicker">Résultat</span>
+    <h1>Ta position face au marché</h1>
+  </div>
+
+  <div class="rcard">
+    <div class="rtable">
+      <div class="rtable-head">
+        <span>Marqueur</span><span>Ton chiffre</span><span>Verdict</span><span>Ta position face au marché</span>
+      </div>
+      <div id="rows"></div>
+      <div class="rfoot"><a class="rfoot-link" href="etude.html">D'où viennent ces moyennes et comment lire les verdicts → Consulter l'étude</a></div>
+    </div>
+
+    <div class="interp-card" id="interp">
+      <span class="eyebrow" id="interpEyebrow">Ce que tu peux récupérer</span>
+      <div class="total-label" id="totalLabel">Manque à gagner annuel</div>
+      <div class="total-amount" id="totalAmount">·</div>
+      <div class="derivation" id="derivation">
+        <div class="deriv-head">Comment on arrive à ce montant</div>
+        <div id="derivLines"></div>
+      </div>
+
+      <!-- Capture (Formspree) : le lead vient à toi -->
+      <div class="capture-card" id="contact">
+        <div class="cap-flag">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#c9b399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Je te contacte dans la journée
+        </div>
+        <h3 class="cap-title" id="capTitle">·</h3>
+        <p class="cap-body" id="capBody">On examine en call plus précisément ton résultat avec le contexte de ton produit.</p>
+
+        <form class="cap-form" id="phoneForm" novalidate>
+          <label class="cap-label" for="leadPhone">Entre ton numéro</label>
+          <input class="cap-input" type="tel" id="leadPhone" inputmode="tel" autocomplete="tel" placeholder="06 12 34 56 78">
+          <button class="cta cta--light cta--block" type="submit" style="text-transform:uppercase;letter-spacing:.03em">
+            <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Échanger par message
+          </button>
+          <div class="cap-note">Gratuit · Je te contacte dans la journée</div>
+        </form>
+
+        <div class="cap-divider"><span></span>Ou<span></span></div>
+        <a class="cap-calendly" href="https://calendly.com/signup-churn/call-15min" target="_blank" rel="noopener">Prendre rendez-vous sur mon Calendly</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PROTOCOLE ============ -->
+  <section class="section section--white">
+    <div class="section-inner">
+      <div class="head rv">
+        <span class="eyebrow">Protocole · 4 étapes</span>
+        <h2 class="section-title">1 mois pour récupérer ton MRR</h2>
+      </div>
+      <div class="steps rv-stagger">
+        <div class="step step--first">
+          <div class="step-meta"><span class="w">01</span><span class="d">Semaine 1</span></div>
+          <h3>Audit</h3>
+          <p>Je passe ton funnel au peigne fin, événement par événement, dans tes outils de tracking. Chaque fuite est chiffrée en euros.</p>
+          <div class="step-out"><span class="arr">→</span>Ton plan d'action priorisé en €</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">02</span><span class="d">Semaine 2</span></div>
+          <h3>Sprint</h3>
+          <p>On corrige ensemble, directement dans le produit, jusqu'à ce que tes chiffres bougent. Pas de deck, pas de reco qui dort dans un drive.</p>
+          <div class="step-out"><span class="arr">→</span>Les correctifs shippés en prod</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">03</span><span class="d">Semaine 4</span></div>
+          <h3>Nouvelle mesure</h3>
+          <p>Mêmes marqueurs, mêmes intervalles, zéro triche. On garde ce qui a bougé, on coupe le reste.</p>
+          <div class="step-out"><span class="arr">→</span>Ton avant / après, chiffré</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">04</span><span class="d">J+90</span></div>
+          <h3>Contrôle</h3>
+          <p>Je reviens vérifier que les gains tiennent, une fois l'effet de nouveauté passé. Si ça a bougé, on ajuste.</p>
+          <div class="step-out"><span class="arr">→</span>Des gains qui tiennent dans le temps</div>
+        </div>
+      </div>
+
+      <!-- Signature -->
+      <div class="signature signature--panel rv">
+        <img class="sig-photo" src="assets/antoine.png" alt="Antoine David">
+        <div class="sig-copy">
+          <p class="sig-quote">« J'aide les SaaS à transformer plus d'inscrits en clients payants. Je ne sous-traite pas. C'est moi qui lis tes chiffres, et c'est moi que tu as en call. »</p>
+          <div class="sig-name">
+            <a class="sig-id" href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antoine David</a>
+            <span class="sep">·</span>
+            <span class="sig-proof">Product strategist depuis 15 ans · +80 clients · +20 M€ récupérés</span>
+          </div>
+          <div class="logo-marquee logo-marquee--sm" aria-hidden="true"><div class="logo-marquee-track"><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAS CLIENTS ============ -->
+  <section class="section section--dark plx" data-plx="0.14">
+    <div class="plx-layer"></div>
+    <div class="section-inner">
+      <div class="head rv">
+        <span class="eyebrow eyebrow--tan">Cas clients</span>
+        <h2 class="section-title" style="color:#fff">Mes scores les plus élevés</h2>
+      </div>
+      <div class="cases rv-stagger">
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-bible.png" alt="Luni · Bible">
+            <div><span class="cn">Luni · Bible</span><span class="case-proof">★ 4,7 · 10M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">+123,7 K€</span><span class="cv-blabel">gagnés en 12 mois</span></div>
+          <p class="case-ctx">+23,2 % de revenus, après avoir coupé tout le budget d'acquisition.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/bible-versets-sagesse/id1405764030" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_534k-de-revenues-et-10m-de-downloads-et-activity-7480160818525925376-0EgC" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-thefork.png" alt="TheFork">
+            <div><span class="cn">TheFork</span><span class="case-proof">★ 4,8 · 10M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">+10,3 M€</span><span class="cv-blabel">générés en 2 ans</span></div>
+          <p class="case-ctx">+30 % de conversion au signup, en réparant le parcours de réservation.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/thefork-guide-de-restaurants/id424850908" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_10-000-000-en-un-peu-plus-de-2-ans-jai-activity-7481232504083943424-vvIA" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-scanner.png" alt="Luni · Scanner">
+            <div><span class="cn">Luni · Scanner</span><span class="case-proof">★ 4,6 · 26,7M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">−3 min.</span><span class="cv-blabel">de time-to-value</span></div>
+          <p class="case-ctx">Sur une app à 46,4 M$ de revenus, chaque minute de friction coûte des millions.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/scanner-scan-pdf-document/id1291962681" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_464m-de-revenus-et-267m-de-t%C3%A9l%C3%A9chargements-activity-7482333509991346176-toOy" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+      </div>
+      <div class="section-cta rv">
+        <a class="cta cta--light" href="#contact" data-goal-cta style="text-transform:uppercase;letter-spacing:.03em">
+          <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-goal-label>Récupérer mon manque à gagner</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="faq-cols">
+        <div class="faq-head rv">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section-title">Les questions qu'on me pose</h2>
+        </div>
+        <div class="faq-list rv" data-rv-delay="120" id="faqList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLÔTURE ============ -->
+  <section class="section section--white">
+    <div class="section-inner closing rv">
+      <h2 class="closing-title">Tu sais ce que tu perds.<br>Voyons comment le récupérer.</h2>
+      <a class="cta" href="#contact" data-goal-cta style="text-transform:uppercase;letter-spacing:.03em">
+        <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span data-goal-label>Récupérer mon manque à gagner</span>
+      </a>
+      <span class="mono-note">Gratuit · Sans compte · 2 min</span>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner sf-grid">
+    <div class="sf-brand">
+      <a class="logo" href="index.html"><span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span></a>
+      <p class="sf-tag">J'aide les SaaS B2B à transformer plus d'inscrits en clients payants. Audit chiffré en euros, sprint dans le produit, résultats mesurés.</p>
+      <a class="sf-in" href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antoine David</a>
+    </div>
+    <nav class="sf-col" aria-label="Explorer">
+      <span class="sf-h">Explorer</span>
+      <a href="analyse.html">Le simulateur</a>
+      <a href="index.html#protocole">Le protocole</a>
+      <a href="index.html#cas">Cas clients</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="etude.html">L'étude</a>
+    </nav>
+    <div class="sf-col">
+      <span class="sf-h">Contact</span>
+      <a href="https://calendly.com/signup-churn/call-15min" target="_blank" rel="noopener">Réserver un call de 15 min</a>
+      <a href="mailto:contact@antoinedavid.com">contact@antoinedavid.com</a>
+      <a href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="section-inner sf-bottom">
+    <span>© 2026 Signup Churn · Antoine David</span>
+    <span><a class="sf-study" href="etude.html">Benchmarks : ChartMogul × ProductLed × Poyar 2026 · 200 SaaS B2B self-serve</a></span>
+  </div>
+</footer>
+
+<script src="js/models.js"></script>
+<script src="js/faq.js"></script>
+<script src="js/resultats.js"></script>
+<script src="js/fx.js"></script>
+</body>
+</html>

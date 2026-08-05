@@ -1,361 +1,332 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Antoine David | Signup Churn™ → MRR</title>
-  <meta name="description" content="Je chiffre le MRR que ton funnel d'inscription laisse partir — en €, annualisé, défendable devant ton board. Puis je le récupère.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    html, body { margin: 0; padding: 0; background: #0B0908; overflow-x: hidden; }
-    body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: #E8A04C; text-decoration: none; }
-    a:hover { color: #F2C078; }
-    ::selection { background: rgba(232,160,76,.35); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-    @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 70px rgba(224,110,25,.4); } 50% { box-shadow: 0 0 120px rgba(232,130,35,.65); } }
-
-    .hv-wa:hover { background: #3BE07A !important; transform: translateY(-1px); }
-    .hv-cream-sm:hover { background: #FFF6E4 !important; transform: translateY(-1px); }
-    .hv-cream-lg:hover { background: #FFF6E4 !important; transform: translateY(-2px); }
-    .hv-card-light:hover { transform: translateY(-5px); box-shadow: 0 16px 34px rgba(26,19,12,.12); }
-    .hv-price-light:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(224,120,30,.22); }
-    .hv-card-dark:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,.45); border-color: rgba(242,192,120,.45) !important; }
-
-    @keyframes headerIn { from { transform: translateY(-100%); } to { transform: none; } }
-    #site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(11,9,8,0);
-      backdrop-filter: blur(0px);
-      -webkit-backdrop-filter: blur(0px);
-      border-bottom: 1px solid rgba(242,231,211,0);
-      animation: headerIn .6s ease both;
-      transition: background .35s ease, border-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease, -webkit-backdrop-filter .35s ease;
-    }
-    #site-header .header-inner {
-      max-width: 1080px; margin: 0 auto; padding: 18px 32px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      transition: padding .35s ease;
-    }
-    #site-header.scrolled {
-      background: rgba(11,9,8,.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom-color: rgba(242,231,211,.1);
-      box-shadow: 0 12px 32px rgba(0,0,0,.4);
-    }
-    #site-header.scrolled .header-inner { padding: 10px 32px; }
-
-    @media (max-width: 640px) {
-      .hero-photo-wrap { flex: 1 1 100% !important; width: 100%; margin: 0 !important; padding: 12px 0 0 !important; }
-      .hero-photo { width: 100% !important; max-width: 380px; height: auto !important; margin: 0 auto; }
-      .header-inner { padding: 12px 20px; }
-      #site-header.scrolled .header-inner { padding: 8px 20px; }
-      .hero-flex { padding: 104px 0 0 !important; }
-      .hero-flex > div:first-child { min-width: 0 !important; }
-      .hero-flex h1 { font-size: clamp(20px, 6.4vw, 30px) !important; }
-      .hero-flex p br { display: none; }
-      .hero-flex p { font-size: 17px !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup Churn · Découvre combien tu perds entre le signup et le paiement, et à quel moment</title>
+<meta name="description" content="Le simulateur compare tes chiffres à ceux de 200 SaaS B2B et calcule ce que tu perds chaque mois entre l'inscription et le paiement. Gratuit, sans compte, 2 minutes.">
+<meta property="og:title" content="Signup Churn · Découvre combien tu perds, et à quel moment · 2 min">
+<meta property="og:description" content="Le simulateur compare tes chiffres à ceux de 200 SaaS B2B et chiffre ton manque à gagner mensuel. Gratuit, sans compte.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,600&family=JetBrains+Mono:wght@400;500;700&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-<div style="min-height: 100vh; background: #0B0908; color: #F7F3EC; font-family: 'Outfit', sans-serif">
-
-  <!-- ============ HEADER STICKY ============ -->
-  <header id="site-header">
-    <div class="header-inner">
-      <div style="display: flex; align-items: baseline; gap: 10px">
-        <span style="font-weight: 800; font-size: 17px; letter-spacing: -0.01em; color: #F7F3EC; white-space: nowrap">Antoine David</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px">
-        <a href="https://wa.me/33623005270" target="_blank" rel="noopener" class="hv-wa" aria-label="WhatsApp" style="display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 42px; height: 42px; background: #25D366; color: #06341B; border-radius: 999px; transition: transform .2s ease, background .2s ease">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"></path></svg>
-        </a>
-        <a href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-sm" style="display: inline-flex; align-items: center; height: 42px; padding: 0 20px; background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 14px; border-radius: 999px; white-space: nowrap; transition: transform .2s ease, background .2s ease">Prendre un RDV</a>
-      </div>
-    </div>
+<!-- ============ HERO (texture sombre, parallax) ============ -->
+<div class="hero-wrap plx" data-plx="0.12">
+  <div class="plx-layer hero-bg"></div>
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span>
+    </a>
   </header>
 
-  <!-- ============ HERO ============ -->
-  <section style="position: relative; background: linear-gradient(180deg, rgba(10,8,7,.62) 0%, rgba(10,8,7,.28) 40%, rgba(11,9,8,.45) 82%, rgba(11,9,8,.85) 100%), url('assets/bg-hero.png') center 65% / cover no-repeat, #0B0908">
-    <div style="max-width: 1080px; margin: 0 auto; padding: 8px 32px 0">
-
-      <div class="hero-flex" style="display: flex; align-items: center; gap: 56px; padding: 72px 0 64px; flex-wrap: wrap">
-        <div style="flex: 1 1 520px; min-width: 380px">
-          <h1 style="margin: 0; font-size: 46px; line-height: 1.16; font-weight: 700; letter-spacing: -0.015em; animation: fadeUp .8s ease .05s both">
-            Tes inscrits s'en vont?<br>
-            <span style="color: rgb(242, 192, 120);">C'est du Signup Churn<sup style="font-size: 0.42em; font-weight: 600; letter-spacing: 0px;">™</sup>.<br>
-            Je le transforme en MRR.</span>
-          </h1>
-          <p style="margin: 22px 0 0; font-size: 19px; line-height: 1.55; color: #CFC5B6; max-width: 560px; text-wrap: pretty; animation: fadeUp .8s ease .18s both">
-            Je chiffre le MRR que ton funnel d'inscription laisse partir : <br>en €, annualisé, défendable devant ton board. Puis je le récupère.
-          </p>
-
-          <div style="display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; animation: fadeUp .8s ease .3s both">
-            <a href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-lg" style="display: inline-flex; align-items: center; gap: 10px; background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 17px; padding: 15px 30px; border-radius: 999px; box-shadow: 0 8px 30px rgba(224,120,30,.25); transition: transform .2s ease, background .2s ease">
-              <span style="font-size: 15px">↙</span> Réserver un call de 30 min
-            </a>
-            <span style="font-size: 14px; color: #B8AFA3">Gratuit. Tu repars avec une première estimation de ton Signup Churn.</span>
-          </div>
-
-          <div style="display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; animation: fadeUp .8s ease .42s both">
-            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">Première estimation en 48h</span>
-            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">+43% d'activation</span>
-            <span style="font-size: 15px; font-weight: 500; color: #F2E7D3; border: 1px solid rgba(242,192,120,.45); background: rgba(242,192,120,.07); border-radius: 999px; padding: 8px 18px">+20M€ récupérés</span>
-          </div>
-        </div><div class="hero-photo-wrap" style="flex: 0 0 auto; margin: 0 auto -64px; align-self: flex-end; background: radial-gradient(closest-side, rgba(224,110,25,.32) 0%, rgba(224,110,25,0) 72%); padding: 28px 28px 0; padding-right: 0px">
-          <img src="photosite-mrj3ymaw.png" alt="Antoine David" class="hero-photo" style="width: 441px; height: 411px; display: block; filter: drop-shadow(0 14px 44px rgba(224,110,25,.45)); animation: fadeUp .9s ease .2s both">
-        </div>
-
-      </div><div data-reveal="0" style="border-top: 1px solid rgba(242,231,211,.12); padding: 26px 0 30px; display: flex; align-items: center; gap: 12px 36px; flex-wrap: wrap">
-          <span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C8377; font-weight: 600">Ils m'ont fait confiance</span>
-          <div style="display: flex; align-items: center; gap: 32px; flex-wrap: wrap; font-weight: 700; font-size: 17px; color: #9A9186">
-            <span>TheFork</span><span>Tiime</span><span>Luni</span><span>kolsquare</span><span>Scenario</span><span>finfrog</span><span>Wemind</span><span style="font-style: italic">Flink'</span>
-          </div>
-        </div>
+  <section class="hero">
+    <div class="hero-badges hi hi-1">
+      <span class="hero-badge">Verdict en 2 min.</span>
+      <span class="hero-badge">200 SaaS B2B</span>
     </div>
-  </section>
-
-  <!-- ============ PROBLEME ============ -->
-  <section style="background: #F2E7D3; color: #1A130C">
-    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
-      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">Le problème</p>
-      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 720px; text-wrap: pretty">Le funnel le plus cher de ta boîte est celui que personne ne regarde.</h2>
-      <p data-reveal="140" style="margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: #5C5142; max-width: 680px; text-wrap: pretty">
-        Entre l'inscription et le premier paiement, ton produit perd des clients qui avaient déjà dit oui. Pose la question autour de toi&nbsp;: <em style="color: #B4651D; font-style: normal; font-weight: 600">«&nbsp;Qui chez nous possède la conversion entre l'inscription et le premier paiement&nbsp;?&nbsp;»</em> Le blanc qui suit, c'est le prix que tu paies chaque mois.
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 44px">
-        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">30–50%</div>
-          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">des visiteurs abandonnent au signup avant même de créer leur compte.</p>
-        </div>
-        <div data-reveal="130" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">70%</div>
-          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">du churn se joue dans les 90 premiers jours, avant que le revenu n'existe.</p>
-        </div>
-        <div data-reveal="260" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.1); border-radius: 16px; padding: 28px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="font-size: 44px; font-weight: 800; color: #B4651D; letter-spacing: -0.02em">66%</div>
-          <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.5; color: #5C5142">des SaaS PLG ne mesurent même pas leur activation.</p>
-        </div>
-      </div><p data-reveal="0" style="margin: 36px 0 0; font-size: 20px; line-height: 1.5; color: #1A130C; font-weight: 600; max-width: 640px; text-wrap: pretty">
-        Mon travail&nbsp;: convertir chaque drop-off en MRR évaporé annualisé.<br>Un chiffre en euros, défendable, que tu peux poser devant ton board.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ============ OFFRE ============ -->
-  <section style="background: #F2E7D3; color: #1A130C">
-    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 96px">
-      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">La méthode</p>
-      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2">
-        Diagnostic → Fix → Preuve.
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px">
-        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="display: flex; align-items: center; justify-content: space-between">
-            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">01 · Diagnostic</span>
-            <span style="font-size: 13px; color: #9A8E7D">5 jours ouvrés</span>
-          </div>
-          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le chiffrage du Signup Churn</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
-            Ton funnel inscription → premier paiement, cartographié. <br>Chaque drop-off chiffré, chaque perte convertie en ARR. <br>Verdict inclus&nbsp;: conversion sous-performante ou funnel cassé.
-          </p>
-        </div>
-        <div data-reveal="130" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="display: flex; align-items: center; justify-content: space-between">
-            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">02 · Sprint</span>
-            <span style="font-size: 13px; color: #9A8E7D">15 jours ouvrés</span>
-          </div>
-          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le fix, prêt pour tes devs</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
-            Le poste n°1 de ton Signup Churn, traité en entier&nbsp;: flows, écrans, copy, états.<br><br>Prototype navigable si le funnel le justifie. <br><br>Workshop de priorisation en clôture.
-          </p>
-        </div>
-        <div data-reveal="260" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 14px; transition: transform .25s ease, box-shadow .25s ease">
-          <div style="display: flex; align-items: center; justify-content: space-between">
-            <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #A06A1E; font-weight: 700">03 · Preuve</span>
-            <span style="font-size: 13px; color: #9A8E7D">Avant / après</span>
-          </div>
-          <h3 style="margin: 0; font-size: 22px; font-weight: 700; line-height: 1.25">Le MRR récupéré, mesuré</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5C5142; text-wrap: pretty">
-            Plan de mesure avant/après livré avec le sprint. <br><br>Le MRR récupéré devient un chiffre une preuve.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRIX ============ -->
-  <section style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
-    <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #C98A2B; font-weight: 700">Le prix</p>
-
-    <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 700px; text-wrap: pretty">Un livrable, un délai, un prix.</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px">
-      <div data-reveal="0" class="hv-price-light" style="background: #F2E7D3; color: #1A130C; border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease">
-        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #A06A1E">Diagnostic Signup Churn™</span>
-        <div style="display: flex; align-items: baseline; gap: 10px">
-          <span style="font-size: 46px; font-weight: 800; letter-spacing: -0.02em">3 500€</span>
-          <span style="font-size: 15px; color: #6B5B44">HT · 5 jours ouvrés</span>
-        </div>
-        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4A3D2C; text-wrap: pretty">
-          Le chiffrage complet de ton Signup Churn, le verdict, la priorisation, et une restitution de 60–90 min. <strong>Crédité à 100% si le sprint suit.</strong>
-        </p>
-      </div>
-      <div data-reveal="150" class="hv-card-dark" style="background: linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 36px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
-        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #C98A2B">Sprint</span>
-        <div style="display: flex; align-items: baseline; gap: 10px">
-          <span style="font-size: 46px; font-weight: 800; letter-spacing: -0.02em; color: #F2C078">9,5–14k€</span>
-          <span style="font-size: 15px; color: #8C8377">HT · 15 jours ouvrés</span>
-        </div>
-        <p style="margin: 0; font-size: 16px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
-          Prix fixé <strong style="color: #F7F3EC">après</strong> le Diagnostic, selon le MRR en jeu. 50% à la signature, 50% à la livraison. Si 240k€/an s'évaporent et que le sprint en coûte 12, la discussion prix disparaît.
-        </p>
-      </div>
-    </div>
-
-    <p data-reveal="0" style="margin: 24px 0 0; font-size: 16px; line-height: 1.55; color: #B8AFA3; max-width: 720px; text-wrap: pretty">
-      Tu préfères parier&nbsp;? Il existe une formule à fixe réduit + pourcentage du MRR récupéré mesuré sur 12 mois. Elle a trois conditions d'entrée. On les vérifie ensemble au call.
-    </p>
-  </section>
-
-  <!-- ============ POUR QUI ============ -->
-  <section style="background: #F2E7D3; color: #1A130C; margin-top: 96px">
-    <div style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 96px">
-      <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #A06A1E; font-weight: 700">Pour qui</p>
-      <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2">
-        Je ne travaille pas avec tout le monde.
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 40px">
-        <div data-reveal="0" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(180,101,29,.35); border-radius: 18px; padding: 32px; transition: transform .25s ease, box-shadow .25s ease">
-          <p style="margin: 0 0 18px; font-size: 17px; font-weight: 700; color: #B4651D">C'est pour toi si</p>
-          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5; color: #3A3125">
-            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Tu diriges le produit ou le growth d'un SaaS PLG self-serve, Series A–B.</span></div>
-            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Des milliers de signups par mois entrent dans ton funnel.</span></div>
-            <div style="display: flex; gap: 12px"><span style="color: #B4651D; font-weight: 700">→</span><span>Tu sens que du revenu s'évapore entre l'inscription et le premier paiement, sans savoir combien.</span></div>
-          </div>
-        </div>
-        <div data-reveal="150" class="hv-card-light" style="background: #FFFBF2; border: 1px solid rgba(26,19,12,.12); border-radius: 18px; padding: 32px; transition: transform .25s ease, box-shadow .25s ease">
-          <p style="margin: 0 0 18px; font-size: 17px; font-weight: 700; color: #9A8E7D">Ce n'est pas pour toi si</p>
-          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5; color: #5C5142">
-            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Tu cherches encore ton product-market fit.</span></div>
-            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Ta vente est 100% sales-led, ton funnel self-serve n'est pas le sujet.</span></div>
-            <div style="display: flex; gap: 12px"><span style="color: #9A8E7D; font-weight: 700">✕</span><span>Ton équipe activation est déjà structurée et outillée.</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PREUVE ============ -->
-  <section style="max-width: 1080px; margin: 0 auto; padding: 96px 32px 0">
-    <p data-reveal="0" style="margin: 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #C98A2B; font-weight: 700">Les preuves</p>
-    <h2 data-reveal="80" style="margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; max-width: 700px; text-wrap: pretty">Du MRR récupéré, mesuré.</h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px">
-      <div data-reveal="0" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
-        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">TheFork · Checkout</span>
-        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">+30%</div>
-        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de conversion checkout</div>
-        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
-          Plus de <strong style="color: #F2C078">10M€ de commissions incrémentales</strong> au niveau de l'écosystème.
-        </p>
-      </div>
-      <div data-reveal="130" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
-        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">App de scan · 26,7M downloads</span>
-        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">−3 min</div>
-        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de time-to-value</div>
-        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
-          Parcours premier usage simplifié, paywall affiché au moment précis, sur une app à <strong style="color: #F2C078">46,4M$ de revenus</strong>.
-        </p>
-      </div>
-      <div data-reveal="260" class="hv-card-dark" style="background: radial-gradient(400px 240px at 90% 115%, rgba(224,102,20,.28) 0%, rgba(30,14,6,0) 70%), linear-gradient(180deg, #17110B 0%, #120D09 100%); border: 1px solid rgba(242,192,120,.22); border-radius: 18px; padding: 32px; display: flex; flex-direction: column; gap: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease">
-        <span style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #C98A2B; font-weight: 700">App de Bible · 10M downloads</span>
-        <div style="font-size: 48px; font-weight: 800; color: #F2C078; letter-spacing: -0.02em; line-height: 1">+23,2%</div>
-        <div style="font-size: 15px; color: #B8AFA3; margin-top: -4px">de revenus en 12 mois</div>
-        <p style="margin: 4px 0 0; font-size: 15px; line-height: 1.55; color: #CFC5B6; text-wrap: pretty">
-          <strong style="color: #F2C078">123 748€ gagnés</strong> sur l'année et budget acquisition supprimé, avec 59,5% de téléchargements en moins.
-        </p>
-      </div>
-    </div>
-
-    <p data-reveal="0" style="margin: 28px 0 0; font-size: 15px; color: #8C8377; max-width: 640px; text-wrap: pretty">
-      Ces mesures avant/après alimentent les +20M€ récupérés en cumul de carrière.
-    </p>
-  </section>
-
-  <!-- ============ CTA FINAL ============ -->
-  <section style="position: relative; margin-top: 110px; background: radial-gradient(900px 500px at 50% 115%, rgba(224,102,20,.5) 0%, rgba(160,58,10,.22) 40%, rgba(11,9,8,0) 75%), #0B0908; border-top: 1px solid rgba(242,231,211,.1)">
-    <div style="max-width: 760px; margin: 0 auto; padding: 96px 32px 110px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0">
-      <div data-reveal="0" style="width: 96px; height: 96px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(242,231,211,.7); box-shadow: 0 0 40px rgba(224,110,25,.4); animation: glowPulse 5s ease-in-out 1s infinite">
-        <img src="assets/photo.png" alt="Antoine David" style="width: 100%; height: 100%; object-fit: cover; display: block">
-      </div>
-      <h2 data-reveal="100" style="margin: 28px 0 0; font-size: 38px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; text-wrap: pretty">
-        Combien ton Signup Churn te coûte, en euros&nbsp;?
-      </h2>
-      <p data-reveal="180" style="margin: 18px 0 0; font-size: 18px; line-height: 1.6; color: #CFC5B6; max-width: 540px; text-wrap: pretty">
-        30 minutes en visio. Tu repars avec une première estimation de ton Signup Churn, même si on ne travaille jamais ensemble.
-      </p>
-      <a data-reveal="260" href="https://calendly.com/antoinedaviddesign/nouvelle-reunion" target="_blank" rel="noopener" class="hv-cream-lg" style="display: inline-flex; align-items: center; gap: 10px; background: #F2E7D3; color: #1A130C; font-weight: 700; font-size: 18px; padding: 17px 36px; border-radius: 999px; margin-top: 34px; box-shadow: 0 10px 40px rgba(224,120,30,.3); transition: transform .2s ease, background .2s ease">
-        <span style="font-size: 15px">↙</span> Réserver mon créneau
+    <h1 class="hi hi-2">Découvre combien tu perds entre le signup et le paiement, et à quel&nbsp;moment. En&nbsp;2&nbsp;min.</h1>
+    <p class="hero-sub hi hi-3">Le simulateur compare tes chiffres à ceux de 200 SaaS et calcule ce que tu perds chaque mois.</p>
+    <div class="hero-action hi hi-4">
+      <img class="hero-photo" src="assets/photo-antoine-hero.png" alt="Antoine David">
+      <a class="cta cta--light" href="analyse.html" style="text-transform:uppercase;letter-spacing:.04em">
+        <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Découvre combien tu perds
       </a>
-      <p style="margin: 16px 0 0; font-size: 13px; color: #8C8377">Réponse sous 48h ouvrées, toujours.</p>
+      <span class="mono-note">Gratuit · Sans compte · 2 min</span>
     </div>
   </section>
 
-  <!-- footer -->
-  <footer style="border-top: 1px solid rgba(242,231,211,.08); padding: 28px 32px; display: flex; justify-content: center; gap: 24px; font-size: 13px; color: #6B6259">
-    <span>Antoine David · Paris, France</span>
-    <span>·</span>
-    <span>Signup Churn™ → MRR</span>
-  </footer>
-
+  <div class="hero-logos hi hi-5">
+    <p>+80 clients me font confiance</p>
+    <div class="logo-marquee" aria-hidden="true"><div class="logo-marquee-track"><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div></div></div>
+  </div>
 </div>
 
-<script>
-(function () {
-  var header = document.getElementById('site-header');
-  function onHeaderScroll() {
-    header.classList.toggle('scrolled', (window.scrollY || document.documentElement.scrollTop) > 24);
-  }
-  window.addEventListener('scroll', onHeaderScroll, { passive: true });
-  onHeaderScroll();
-})();
+<!-- ============ TÉMOIGNAGES + MOYENNES DU MARCHÉ ============ -->
+<section class="section section--white">
+  <div class="section-inner">
+    <div class="head rv">
+      <span class="eyebrow">Témoignages</span>
+      <h2 class="section-title">Ils ont augmenté leur conversion et leur MRR</h2>
+    </div>
+    <div class="testi-grid rv-stagger">
 
-(function () {
-  var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
-  els.forEach(function (el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(28px)';
-    el.style.transition = 'opacity .7s ease, transform .7s ease';
-    el.style.transitionDelay = (el.getAttribute('data-reveal') || '0') + 'ms';
-  });
+      <article class="testi">
+        <p class="quote">« En deux semaines, on a doublé le taux d'activation. Rien de spectaculaire : juste des frictions retirées une par une. »</p>
+        <div class="author">
+          <div class="author-chips">
+            <a class="co-chip" style="background:#188287" href="https://get-gustav.com/" target="_blank" rel="noopener" aria-label="Gustav"><img src="assets/chip-gustav-glyph.png" alt="Gustav"></a>
+            <img class="avatar" src="assets/avatar-jonathan.jpg" alt="Jonathan Buttigieg">
+          </div>
+          <div><a class="t-id" href="https://www.linkedin.com/in/jonathan-buttigieg/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Jonathan Buttigieg</a><div class="r">CEO · <a class="t-site" href="https://get-gustav.com/" target="_blank" rel="noopener">Gustav</a></div></div>
+        </div>
+        <div class="delta">
+          <span class="metric">Visiteurs → Inscrits</span>
+          <div class="values"><span class="before">12 %</span><span class="arr">→</span><span class="after" data-count="26" data-count-tpl="{v} %">26 %</span></div>
+        </div>
+      </article>
 
-  var pending = els;
-  function onScroll() {
-    if (!pending.length) return;
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    pending = pending.filter(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < vh - 40 && r.bottom > -20) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        return false;
-      }
-      return true;
-    });
-  }
+      <article class="testi">
+        <p class="quote">« Antoine a chiffré chaque fuite en euros. C'est la première fois qu'on priorisait un backlog sans débattre. »</p>
+        <div class="author">
+          <div class="author-chips">
+            <a class="co-chip" href="https://sellit.today/" target="_blank" rel="noopener" aria-label="Sell it Today"><img src="assets/chip-sellittoday.png" alt="Sell it Today"></a>
+            <img class="avatar" src="assets/avatar-antonin.jpg" alt="Antonin">
+          </div>
+          <div><a class="t-id" href="https://fr.linkedin.com/in/antonin-armand-30b89522b" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antonin</a><div class="r">CEO · <a class="t-site" href="https://sellit.today/" target="_blank" rel="noopener">Sell it Today</a></div></div>
+        </div>
+        <div class="delta">
+          <span class="metric">Inscrits → Payants</span>
+          <div class="values"><span class="before">8 %</span><span class="arr">→</span><span class="after" data-count="19" data-count-tpl="{v} %">19 %</span></div>
+        </div>
+      </article>
 
-  window.addEventListener('scroll', onScroll, { passive: true, capture: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  requestAnimationFrame(function () { requestAnimationFrame(onScroll); });
-  setTimeout(onScroll, 400);
-})();
-</script>
+      <article class="testi">
+        <p class="quote">« Le rapport tenait sur deux pages. On a exécuté trois points, le MRR a suivi le mois suivant. »</p>
+        <div class="author">
+          <div class="author-chips">
+            <a class="co-chip" href="https://cevidentia.com/" target="_blank" rel="noopener" aria-label="C'evidentia"><img src="assets/chip-cevidentia.png" alt="C'evidentia"></a>
+            <img class="avatar" src="assets/avatar-baptiste.jpg" alt="Baptiste De La Brosse">
+          </div>
+          <div><a class="t-id" href="https://fr.linkedin.com/in/baptiste-de-la-brosse-67b03a98" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Baptiste De La Brosse</a><div class="r">CEO · <a class="t-site" href="https://cevidentia.com/" target="_blank" rel="noopener">C'evidentia</a></div></div>
+        </div>
+        <div class="delta">
+          <span class="metric">Essai → Payant</span>
+          <div class="values"><span class="before">14 %</span><span class="arr">→</span><span class="after" data-count="31" data-count-tpl="{v} %">31 %</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Carte sombre : moyennes par modèle (le gratuit qui tease le perso) -->
+    <div class="mcard rv">
+      <div class="mcard-head">
+        <span class="mcard-eyebrow">Les moyennes du marché, par modèle</span>
+        <a class="mcard-note mcard-note--link" href="etude.html">Chiffres ChartMogul × ProductLed × Poyar 2026 →</a>
+      </div>
+      <div class="mmodels">
+
+        <a class="mmodel" href="analyse.html?model=freemium">
+          <div class="mtitle"><span class="n">Freemium</span><span class="s">gratuit à vie</span></div>
+          <div class="mmetrics">
+            <div class="mrow"><span class="k">Visiteurs → Inscrits</span><span class="v">9,0 %</span></div>
+            <div class="mrow"><span class="k">Inscrits → Payants</span><span class="v">4,1 %</span></div>
+          </div>
+          <div class="mfoot"><span class="mpanel">62 SaaS du panel</span><span class="mcta">Comparer avec mes chiffres</span></div>
+        </a>
+
+        <a class="mmodel" href="analyse.html?model=ungated">
+          <div class="mtitle"><span class="n">Produit ouvert</span><span class="s">Essai sans inscription</span></div>
+          <div class="mmetrics">
+            <div class="mrow"><span class="k">Visiteurs → Inscrits</span><span class="v">6,5 %</span></div>
+            <div class="mrow"><span class="k">Inscrits → Payants</span><span class="v">12,0 %</span></div>
+          </div>
+          <div class="mfoot"><span class="mpanel">34 SaaS du panel</span><span class="mcta">Comparer avec mes chiffres</span></div>
+        </a>
+
+        <a class="mmodel" href="analyse.html?model=optin">
+          <div class="mtitle"><span class="n">Essai sans CB</span><span class="s">Carte non requise</span></div>
+          <div class="mmetrics">
+            <div class="mrow"><span class="k">Visiteurs → Inscrits</span><span class="v">3,2 %</span></div>
+            <div class="mrow"><span class="k">Inscrits → Payants</span><span class="v">45,0 %</span></div>
+          </div>
+          <div class="mfoot"><span class="mpanel">58 SaaS du panel</span><span class="mcta">Comparer avec mes chiffres</span></div>
+        </a>
+
+        <a class="mmodel" href="analyse.html?model=cb">
+          <div class="mtitle"><span class="n">Essai avec CB</span><span class="s">Carte requise</span></div>
+          <div class="mmetrics">
+            <div class="mrow"><span class="k">Visiteurs → Inscrits</span><span class="v">2,1 %</span></div>
+            <div class="mrow"><span class="k">Inscrits → Payants</span><span class="v">22,0 %</span></div>
+          </div>
+          <div class="mfoot"><span class="mpanel">46 SaaS du panel</span><span class="mcta">Comparer avec mes chiffres</span></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Bandeau : vente sans démo (cible sales-led → self-serve) -->
+    <div class="demo-band rv">
+      <div class="copy">
+        <span class="tag">Tu vends uniquement en démo commerciale ?</span>
+        <p class="constat">Sous 1 200 €/an par client, un commercial coûte plus cher qu'il ne rapporte.</p>
+        <p class="alt2">L'alternative : tes clients s'inscrivent et paient seuls, sans te parler comme les 4 modèles ci-dessus.</p>
+      </div>
+      <a class="cta-outline" href="analyse.html?model=demo">
+        Voir si c'est rentable chez toi
+        <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#8c0f02" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROTOCOLE ============ -->
+<section class="section" id="protocole">
+  <div class="section-inner">
+    <div class="head rv">
+      <span class="eyebrow">Protocole · 4 étapes</span>
+      <h2 class="section-title">Comment on récupère du MRR ?</h2>
+    </div>
+    <div class="steps rv-stagger">
+        <div class="step step--first">
+          <div class="step-meta"><span class="w">01</span><span class="d">Semaine 1</span></div>
+          <h3>Audit</h3>
+          <p>Je passe ton funnel au peigne fin, événement par événement, dans tes outils de tracking. Chaque fuite est chiffrée en euros.</p>
+          <div class="step-out"><span class="arr">→</span>Ton plan d'action priorisé en €</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">02</span><span class="d">Semaine 2</span></div>
+          <h3>Sprint</h3>
+          <p>On corrige ensemble, directement dans le produit, jusqu'à ce que tes chiffres bougent. Pas de deck, pas de reco qui dort dans un drive.</p>
+          <div class="step-out"><span class="arr">→</span>Les correctifs shippés en prod</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">03</span><span class="d">Semaine 4</span></div>
+          <h3>Nouvelle mesure</h3>
+          <p>Mêmes marqueurs, mêmes intervalles, zéro triche. On garde ce qui a bougé, on coupe le reste.</p>
+          <div class="step-out"><span class="arr">→</span>Ton avant / après, chiffré</div>
+        </div>
+        <div class="step">
+          <div class="step-meta"><span class="w">04</span><span class="d">J+90</span></div>
+          <h3>Contrôle</h3>
+          <p>Je reviens vérifier que les gains tiennent, une fois l'effet de nouveauté passé. Si ça a bougé, on ajuste.</p>
+          <div class="step-out"><span class="arr">→</span>Des gains qui tiennent dans le temps</div>
+        </div>
+      </div>
+    <div class="section-cta rv">
+      <a class="cta" href="analyse.html" style="text-transform:uppercase;letter-spacing:.03em">
+        <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Découvre combien tu perds
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE ============ -->
+<section class="section section--white">
+  <div class="section-inner">
+    <div class="signature rv">
+        <img class="sig-photo" src="assets/antoine.png" alt="Antoine David">
+        <div class="sig-copy">
+          <p class="sig-quote">« J'aide les SaaS à transformer plus d'inscrits en clients payants. Je ne sous-traite pas. C'est moi qui lis tes chiffres, et c'est moi que tu as en call. »</p>
+          <div class="sig-name">
+            <a class="sig-id" href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antoine David</a>
+            <span class="sep">·</span>
+            <span class="sig-proof">Product strategist depuis 15 ans · +80 clients · +20 M€ récupérés</span>
+          </div>
+          <div class="logo-marquee logo-marquee--sm" aria-hidden="true"><div class="logo-marquee-track"><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div><div class="logo-set"><span class="lg" style="--x:5.6px;--w:159.7px"></span><span class="lg" style="--x:199px;--w:107.4px"></span><span class="lg" style="--x:340.1px;--w:70px"></span><span class="lg" style="--x:443.7px;--w:132.7px"></span><span class="lg" style="--x:611.1px;--w:159px"></span><span class="lg" style="--x:809.3px;--w:100.1px"></span><span class="lg" style="--x:943.8px;--w:109.7px"></span><span class="lg" style="--x:1087.1px;--w:99px"></span><span class="lg" style="--x:1219.8px;--w:90.1px"></span></div></div></div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- ============ CAS CLIENTS (texture sombre, parallax) ============ -->
+<section class="section section--dark plx" data-plx="0.14" id="cas">
+  <div class="plx-layer"></div>
+  <div class="section-inner">
+    <div class="head rv">
+      <span class="eyebrow eyebrow--tan">Cas clients</span>
+      <h2 class="section-title" style="color:#fff">Mes scores les plus élevés</h2>
+    </div>
+    <div class="cases rv-stagger">
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-bible.png" alt="Luni · Bible">
+            <div><span class="cn">Luni · Bible</span><span class="case-proof">★ 4,7 · 10M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">+123,7 K€</span><span class="cv-blabel">gagnés en 12 mois</span></div>
+          <p class="case-ctx">+23,2 % de revenus, après avoir coupé tout le budget d'acquisition.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/bible-versets-sagesse/id1405764030" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_534k-de-revenues-et-10m-de-downloads-et-activity-7480160818525925376-0EgC" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-thefork.png" alt="TheFork">
+            <div><span class="cn">TheFork</span><span class="case-proof">★ 4,8 · 10M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">+10,3 M€</span><span class="cv-blabel">générés en 2 ans</span></div>
+          <p class="case-ctx">+30 % de conversion au signup, en réparant le parcours de réservation.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/thefork-guide-de-restaurants/id424850908" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_10-000-000-en-un-peu-plus-de-2-ans-jai-activity-7481232504083943424-vvIA" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+        <div class="case">
+          <div class="case-id">
+            <img src="assets/app-scanner.png" alt="Luni · Scanner">
+            <div><span class="cn">Luni · Scanner</span><span class="case-proof">★ 4,6 · 26,7M+ téléchargements</span></div>
+          </div>
+          <div class="case-big"><span class="cv-big">−3 min.</span><span class="cv-blabel">de time-to-value</span></div>
+          <p class="case-ctx">Sur une app à 46,4 M$ de revenus, chaque minute de friction coûte des millions.</p>
+          <div class="case-app"><a class="app-link" href="https://apps.apple.com/fr/app/scanner-scan-pdf-document/id1291962681" target="_blank" rel="noopener">Voir l'app →</a><a class="app-link" href="https://www.linkedin.com/posts/antoinedavid1_464m-de-revenus-et-267m-de-t%C3%A9l%C3%A9chargements-activity-7482333509991346176-toOy" target="_blank" rel="noopener">Le post LinkedIn →</a></div>
+        </div>
+      </div>
+    <div class="section-cta rv">
+      <a class="cta cta--light" href="analyse.html" style="text-transform:uppercase;letter-spacing:.03em">
+        <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Découvre combien tu peux gagner
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section--white" id="faq">
+  <div class="section-inner">
+    <div class="faq-cols">
+      <div class="faq-head rv">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Les questions qu'on me pose</h2>
+      </div>
+      <div class="faq-list rv" data-rv-delay="120" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLÔTURE ============ -->
+<section class="section">
+  <div class="section-inner closing rv">
+    <h2 class="closing-title">Tes inscriptions montent mais ton MRR ne suit pas.<br>Découvre à quel moment ça churn.</h2>
+    <a class="cta" href="analyse.html" style="text-transform:uppercase;letter-spacing:.03em">
+      <span class="chip-icon"><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path d="M7 2.5 11.5 7 7 11.5M11.5 7H2.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      Découvre combien tu perds
+    </a>
+    <span class="mono-note mono-note--dark">Gratuit · Sans compte · 2 min</span>
+  </div>
+</section>
+
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner sf-grid">
+    <div class="sf-brand">
+      <a class="logo" href="index.html"><span class="logo-name">Signup Churn</span><span class="logo-tm">TM</span></a>
+      <p class="sf-tag">J'aide les SaaS B2B à transformer plus d'inscrits en clients payants. Audit chiffré en euros, sprint dans le produit, résultats mesurés.</p>
+      <a class="sf-in" href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Antoine David</a>
+    </div>
+    <nav class="sf-col" aria-label="Explorer">
+      <span class="sf-h">Explorer</span>
+      <a href="analyse.html">Le simulateur</a>
+      <a href="index.html#protocole">Le protocole</a>
+      <a href="index.html#cas">Cas clients</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="etude.html">L'étude</a>
+    </nav>
+    <div class="sf-col">
+      <span class="sf-h">Contact</span>
+      <a href="https://calendly.com/signup-churn/call-15min" target="_blank" rel="noopener">Réserver un call de 15 min</a>
+      <a href="mailto:contact@antoinedavid.com">contact@antoinedavid.com</a>
+      <a href="https://www.linkedin.com/in/antoinedavid1/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="section-inner sf-bottom">
+    <span>© 2026 Signup Churn · Antoine David</span>
+    <span><a class="sf-study" href="etude.html">Benchmarks : ChartMogul × ProductLed × Poyar 2026 · 200 SaaS B2B self-serve</a></span>
+  </div>
+</footer>
+
+<script src="js/faq.js"></script>
+<script src="js/fx.js"></script>
 </body>
 </html>

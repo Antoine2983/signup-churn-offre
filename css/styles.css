@@ -1348,3 +1348,6 @@ html{scroll-behavior:smooth}
 }
 .mmodel:hover .mcta::after{left:135%;transition:left .6s ease .2s}
 @media (prefers-reduced-motion: reduce){.mcta::after{display:none}}
+
+/* Sans témoignages : la carte des moyennes ouvre la section */
+.section-inner > .mcard:first-child{margin-top:0}

@@ -1351,3 +1351,7 @@ html{scroll-behavior:smooth}
 
 /* Sans témoignages : la carte des moyennes ouvre la section */
 .section-inner > .mcard:first-child{margin-top:0}
+
+/* Tête de section centrée (marché des SaaS) */
+.head--center{align-items:center;text-align:center}
+.head--center + .mcard{margin-top:0}
